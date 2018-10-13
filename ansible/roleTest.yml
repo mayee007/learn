@@ -1,0 +1,37 @@
+---
+- name: role testing 
+  hosts: localhost 
+
+  vars: 
+     my_version: 1.0
+
+  vars_files: 
+    - included_vars.yml 
+
+  tasks: 
+    - name: display version 
+      debug: 
+        msg: "My Version: {{ my_version }} , version from file {{ version }}  "
+
+    - name: say hi 
+      debug: 
+        msg: "HI from Main program"
+
+    - include: included_tasks.yml 
+      vars:
+          name: "Mahesh"
+          complex_msg: "very tricky situation"
+
+    - name: create env files 
+      template: src="env_template.yml" dest="application.properties"
+
+    - name: say bye 
+      debug: 
+        msg: "BYE from Main program"
+
+  handlers: 
+    - include: included_handlers.yml
+    - name: just a notify 
+      debug: 
+        msg: "inside main handler" 
+    
