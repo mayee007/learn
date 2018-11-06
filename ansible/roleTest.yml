@@ -22,8 +22,14 @@
           name: "Mahesh"
           complex_msg: "very tricky situation"
 
-    - name: create env files 
+    - name: verify file exists 
+      stat: 
+        path: /tmp/application.properties
+      register: envFile
+
+    - name: create env files, copy only if the file doesn't exist 
       template: src="templates/env_template.yml" dest="/tmp/application.properties"
+      when: envFile.stat.exists == False
 
     - name: say bye 
       debug: 
