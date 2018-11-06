@@ -1,0 +1,11 @@
+--- # pass variable to Jinja2 and loop thru 
+- hosts: localhost 
+  
+  vars: 
+    cities: ['Northern VA', 'Montgomery', 'Crystal City', 'Dallas', 'Detroit']
+
+  tasks: 
+  - name: loop thru data
+    template: 
+      src: templates/loop.j2
+      dest: /tmp/selectedCities.txt

@@ -1,0 +1,28 @@
+import re
+#function to get sum of 2 values 
+def sumVal(arr, target): 
+	print (len(arr))
+	for val in arr:
+		print (len(arr))
+		print (type(arr))
+		if ( (arr[val] + arr[val+1])  == target):
+			print ("interesting")
+
+		
+aliases = { "sachin" : "Sachin Tendulkar" , 
+	    "laxman" : "VVS Laxman" } 
+vals = [10, 20, 25, 40] 
+
+for alias in aliases:
+   if alias ==  "sachin":
+     print("alias: " + alias  + " and fullname : "+ aliases[alias]) 
+
+   #/and person: "+ aliases[alias]}
+   print (aliases["sachin"])
+   print ("val of " + aliases[alias])
+
+targetVal = 30 
+
+sumVal(aliases, 30)
+sumVal(vals, 30)
+

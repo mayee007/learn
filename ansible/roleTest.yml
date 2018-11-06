@@ -6,7 +6,7 @@
      my_version: 1.0
 
   vars_files: 
-    - included_vars.yml 
+    - vars/included_vars.yml 
 
   tasks: 
     - name: display version 
@@ -17,20 +17,20 @@
       debug: 
         msg: "HI from Main program"
 
-    - include: included_tasks.yml 
+    - include: tasks/included_tasks.yml 
       vars:
           name: "Mahesh"
           complex_msg: "very tricky situation"
 
     - name: create env files 
-      template: src="env_template.yml" dest="application.properties"
+      template: src="templates/env_template.yml" dest="/tmp/application.properties"
 
     - name: say bye 
       debug: 
         msg: "BYE from Main program"
 
   handlers: 
-    - include: included_handlers.yml
+    - include: handlers/included_handlers.yml
     - name: just a notify 
       debug: 
         msg: "inside main handler" 
